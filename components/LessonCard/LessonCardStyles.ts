@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     subgroup: {
-        fontSize: 14,
+        fontSize: 12,
         color: '#FFF',
     },
     lesson_footer: {
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
         marginBottom: 8,
     },
     room_name: {
+        fontSize: 14,
         color: '#FFF',
     },
     today: {
@@ -66,5 +67,16 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         padding: 10,
     },
+    viewContainer: {
+        backgroundColor: 'rgb(15, 15, 20)',
+        height: "100%",
+        alignItems: 'center',
+    },
+
+    emptyTimeTable: {
+        color: '#FFF',
+        marginTop: 10,
+        fontWeight: 'bold',
+    }
 });
 export default styles;

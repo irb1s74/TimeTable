@@ -1,9 +1,8 @@
-import React, {FC} from 'react';
+import React, {FC, memo} from 'react';
 import {TimeTable} from "../../models/TimeTable";
 import {
     View,
     Text,
-    StyleSheet,
 } from 'react-native';
 import styles from "../LessonCard/LessonCardStyles";
 
@@ -11,7 +10,7 @@ interface LessonCardProps {
     timeTable: TimeTable[]
 }
 
-const LessonCard: FC<LessonCardProps> = ({timeTable}) => {
+const LessonCard: FC<LessonCardProps> = memo(({timeTable}) => {
     const getTimeLesson = (index: number) => {
         switch (index) {
             case 1:
@@ -32,37 +31,41 @@ const LessonCard: FC<LessonCardProps> = ({timeTable}) => {
     };
     return (
         <View style={styles.lessons}>
-            {timeTable.map((lesson, index) => (
-                <View key={index}>
-                    <Text style={styles.time}>
-                        {getTimeLesson(lesson.num)}
-                    </Text>
-                    <View style={styles.lesson}>
-                        <View style={styles.lesson_header}>
-                            <Text style={styles.index}>{lesson.num}.</Text>
-                            <Text
-                                style={styles.subgroup}>{lesson.subgroup !== 0 && "подгруппа: " + lesson.subgroup}</Text>
-                        </View>
-                        <Text style={styles.subject_name}>
-                            {lesson?.subject_name}
+            {
+                timeTable.map((lesson, index) => (
+                    <View key={index}>
+                        <Text style={styles.time}>
+                            {getTimeLesson(lesson.num)}
                         </Text>
-                        <View style={styles.lesson_footer}>
-                            <Text style={styles.surname}>
-                                {lesson?.teacher_surname && lesson.teacher_surname + " "}
-                                {lesson.teacher_name && lesson.teacher_name.replace(/ /g, '').split('')[0] + "."}
-                                {lesson.teacher_secondname && lesson.teacher_secondname.replace(/ /g, '').split('')[0] + "."}
+                        <View style={styles.lesson}>
+                            <View style={styles.lesson_header}>
+                                <Text style={styles.index}>
+                                    {lesson.num}.
+                                </Text>
+                                <Text style={styles.subgroup}>
+                                    {lesson.subgroup !== 0 && `подгруппа: ${lesson.subgroup} `}
+                                </Text>
+                            </View>
+                            <Text style={styles.subject_name}>
+                                {lesson?.subject_name}
                             </Text>
-                            <Text style={styles.room_name}>
-                                {lesson?.room_name}
-                            </Text>
+                            <View style={styles.lesson_footer}>
+                                <Text style={styles.surname}>
+                                    {lesson?.teacher_surname && lesson.teacher_surname + " "}
+                                    {lesson.teacher_name && lesson.teacher_name.replace(/ /g, '').split('')[0] + "."}
+                                    {lesson.teacher_secondname && lesson.teacher_secondname.replace(/ /g, '').split('')[0] + "."}
+                                </Text>
+                                <Text style={styles.room_name}>
+                                    {lesson?.room_name && `${lesson.room_name} `}
+                                </Text>
+                            </View>
                         </View>
                     </View>
-                </View>
-            ))
+                ))
             }
         </View>
     );
-};
+});
 
 export default LessonCard;
 

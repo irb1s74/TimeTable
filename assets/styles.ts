@@ -8,16 +8,23 @@ const styles = StyleSheet.create({
         padding: 8,
         // boxSizing: 'border-box',
     },
+    button: {},
     paragraph: {
-        marginTop: 40,
-        marginBottom: 18,
-        marginLeft: 10,
+
         fontSize: 28,
         fontWeight: 'bold',
         textAlign: 'left',
         color: '#FFF',
     },
-
+    header: {
+        marginTop: 40,
+        marginBottom: 18,
+        marginLeft: 10,
+        marginRight: 10,
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "center"
+    },
     daysWrapper: {
         alignItems: 'center',
         width: '100%',
